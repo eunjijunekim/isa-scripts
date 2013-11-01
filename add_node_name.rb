@@ -5,13 +5,9 @@ column_num = ARGV[2]
 input = input_file.split(".")[0]
 column = column_num.to_i - 1
 
-
-
 File.open(input_file, "r+") do |file|
 	out = ""
-
 	first_entry = "Source Name"
-
 	file.each do |line| 
 		first_item = line.split("\t")[0].tr('"', '')
 		if first_item == first_entry 
