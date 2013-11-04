@@ -15,8 +15,9 @@ File.open(input_file, "r+") do |file|
 		else
 			column = column_num.to_i - 1
 			node_name = line.split("\t")[column].tr('"', '')
+			line << line.gsub!(node_name, "node_name")
 			new_node_name = string_to_add + " " + node_name
-			out << line.gsub!(node_name, new_node_name)
+			out << line.gsub!("node_name", new_node_name)
 		end
 	end
 	file.pos = 0
