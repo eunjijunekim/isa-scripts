@@ -18,14 +18,25 @@ else
 	
 	File.open(input_file, "r+") do |file|
 		out = ""
-		file.each do |line| 
+		file.each do |line|
 			first_item = line.split("\t")[0].tr('"', '')
 			if first_item == first_entry 
 				out << line
+				total_col = line.split("\t")
+				#puts total_col[column]
+				#puts total_col.index("Sample Name")
 			else
 				column = column_num.to_i - 1
 				node_name = line.split("\t")[column].tr('"', '')
-				new_node_name = string_to_add + " " + node_name
+				#puts node_name
+				#puts string_to_add
+				## to remove
+				#node_name = node_name.split(" ")[1]
+				#new_node_name =  node_name
+				## to add string before the name
+				#new_node_name = string_to_add + " " + node_name
+				## to add string after the name
+				new_node_name = node_name + " " + string_to_add
 				line[line.split("\t")[column]] = new_node_name
 				out << line
 			end
