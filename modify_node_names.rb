@@ -1,4 +1,3 @@
-
 #!/usr/bin/env ruby
 
 if (ARGV.length != 3) or (@ARGV == '-h')
@@ -22,21 +21,47 @@ else
 			first_item = line.split("\t")[0].tr('"', '')
 			if first_item == first_entry 
 				out << line
-				total_col = line.split("\t")
+				#total_col = line.split("\t")
 				#puts total_col[column]
 				#puts total_col.index("Sample Name")
 			else
-				column = column_num.to_i - 1
 				node_name = line.split("\t")[column].tr('"', '')
+				#sample_name = line.split("\t")[0].tr('"','').split[0]
+				#puts sample_name
+				## edit name
 				#puts node_name
+				#node_name_split = node_name.split("/")
+				#node_name_size = node_name_split.size
+				#puts node_name_size
+				#if node_name_size == 3
+				#	new_node_name_1 = node_name.split("_")[1]
+				#	new_node_name_2 = node_name.split("_")[2]
+				#	#new_node_name = new_node_name_1 + "_" + new_node_name_2
+				#else
+				#	new_node_name_1 = node_name.split("_")[1]
+				#	new_node_name_2 = node_name.split("_")[2]
+				#	new_node_name_3 = node_name.split("_")[3]
+				#	#new_node_name = new_node_name_1 + "_" + new_node_name_2 + "_" + new_node_name_3
+				#end
+				
+				#new_node_name = new_node_name_1 + "_" + new_node_name_2 + new_node_name_3
+				#puts new_node_name
 				#puts string_to_add
+
 				## to remove
-				#node_name = node_name.split(" ")[1]
+				#node_name = node_name.split(" ")[0]
 				#new_node_name =  node_name
+
 				## to add string before the name
-				#new_node_name = string_to_add + " " + node_name
+				#new_node_name =  string_to_add + " " + node_name
+				#puts new_node_name
+				
 				## to add string after the name
 				new_node_name = node_name + " " + string_to_add
+				#puts node_name
+				#puts line.split("\t")[column]
+				
+				##common
 				line[line.split("\t")[column]] = new_node_name
 				out << line
 			end
